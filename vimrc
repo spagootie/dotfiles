@@ -31,14 +31,13 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-fugitive'
   " Oceanic Next theme for neovim
   Plug 'mhartington/oceanic-next'
-  " 🌸 A command-line fuzzy finder
-  Plug '/usr/local/opt/fzf'
-  " fzf ❤️ vim
-  Plug 'junegunn/fzf.vim'
   " A solid language pack for Vim.
   Plug 'sheerun/vim-polyglot'
   " 📔 The interactive scratchpad for hackers.
   Plug 'metakirby5/codi.vim'
+  " 👏 Modern performant generic finder and dispatcher for Vim and NeoVim
+  Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
+  let g:clap_popup_input_delay = 100
 
   " Check syntax in Vim asynchronously and fix files, with Language Server Protocol (LSP) support
   Plug 'dense-analysis/ale'
@@ -224,7 +223,7 @@ nnoremap <Leader>l :call RunLastSpec()<CR>
 nnoremap <Leader>s :call RunNearestSpec()<CR>
 
 " Search for files with Ctrl+P
-nnoremap <C-p> :Files<CR>
+nnoremap <C-p> :Clap files<CR>
 
 " Use DevDocs instead of keywordprg
 nmap K <Plug>(devdocs-under-cursor)
