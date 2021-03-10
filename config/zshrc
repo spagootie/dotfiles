@@ -52,7 +52,12 @@ function zsh_minisnip {
 
 # Plugins, using zplug: https://github.com/zplug/zplug {{{
 # Enable zplug
-export ZPLUG_HOME=/usr/local/opt/zplug
+if [[ -e /usr/local/opt/zplug ]]; then
+  export ZPLUG_HOME=/usr/local/opt/zplug
+else
+  export ZPLUG_HOME=$HOME/.zplug
+fi
+
 source $ZPLUG_HOME/init.zsh
 
 # zsh-async: dependecy for many other plugins
@@ -87,6 +92,10 @@ fi
 safe_source "$HOME/.fzf.zsh"
 
 # Load NVM
+if [[ -e "/home/ivan/.fnm" ]]; then
+  export PATH=/home/ivan/.fnm:$PATH
+fi
+
 eval "$(fnm env)"
 
 # use Linuxbrew if on Linux
@@ -151,3 +160,9 @@ bindkey "^T" zsh_minisnip
 # }}}
 
 # vim: fdm=marker fdl=0
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/ivan/google-cloud-sdk/path.zsh.inc' ]; then . '/home/ivan/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/ivan/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/ivan/google-cloud-sdk/completion.zsh.inc'; fi

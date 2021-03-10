@@ -1,0 +1,14 @@
+daemonize
+key-hl-color=880033
+ring-color=444444aa
+line-color=00000000
+inside-color=000000aa
+separator-color=00000000
+screenshots
+effect-blur=8x10
+effect-vignette=0.8:0.8
+indicator
+grace=5
+fade-in=1
+font=Roboto
+text-color=ffffff

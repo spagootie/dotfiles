@@ -24,9 +24,18 @@
     ~/.config/sway:
       relink: true
       path: config/sway
+    ~/.config/swaylock:
+      relink: true
+      path: config/swaylock
     ~/.config/waybar:
       relink: true
       path: config/waybar
+    ~/.config/mako:
+      relink: true
+      path: config/mako
+    ~/.config/environment.d:
+      relink: true
+      path: config/environment.d
     ~/.terminalizer/config.yml:
       relink: true
       path: config/terminalizer.config.yml
