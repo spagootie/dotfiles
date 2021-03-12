@@ -1,19 +1,21 @@
-/*
- * https://coolors.co/1c1018-36c9c6-ed6a5a-ffbe0b-6bd425
- * # 1C1018  Xiketic           dark purple
- * # ed6a5a  Terra Cotta       red
- * # 36c9c6  Robin Egg Blue    vibrant blue
- * # ffbe0b  Mango             orange yellow
- * # 6bd425  Lime Green        lime green
- */
+/* https://coolors.co/3d5a80-98c1d9-e0fbfc-ee6c4d-293241 */
+@define-color text_primary #293241;
+@define-color text_invert #eff7fa;
+@define-color bg_primary #eff7fa;
+@define-color bg_invert #5075a5;
+@define-color highlight_primary #5075a5;
+@define-color highlight_secondary #3d5a80;
+@define-color highlight_important #ee6c4d;
+@define-color highlight_invert #eff7fa;
+
 * {
-    font-family: Roboto, Helvetica, Arial, sans-serif;
-    font-size: 14px;
+  font-family: "Noto Sans", Helvetica, Arial, sans-serif;
+  font-size: 15px;
 }
 
 window {
   background: transparent;
-  color: #000000;
+  color: @text_primary;
 }
 
 window.empty * > #window {
@@ -22,30 +24,30 @@ window.empty * > #window {
 }
 
 #window {
-  background: white;
+  background: @bg_primary;
   padding: 0 10px;
-  border-bottom: 3px solid #36c9c6;
-  margin-top: 3px;
+  border-bottom: 3px solid @highlight_primary;
+  margin-top: 5px;
 }
 
 #workspaces {
-  background: white;
+  background: @bg_primary;
   padding: 0;
-  margin: 3px 0 0 5px;
+  margin: 5px 0 0 10px;
 }
 
 #workspaces button {
   padding: 0 5px;
-  color: #000000;
+  color: @text_primary;
 }
 
 #workspaces button.focused {
-  border-bottom: 3px solid #36c9c6;
+  border-bottom: 3px solid @highlight_primary;
   border-radius: 0;
 }
 
 #workspaces button:hover {
-  border-bottom: 3px solid #36c9c6;
+  border-bottom: 3px solid @highlight_primary;
   border-radius: 0;
   box-shadow: inherit;
   text-shadow: inherit;
@@ -53,7 +55,7 @@ window.empty * > #window {
 }
 
 #workspaces button.urgent {
-  border-bottom: 3px solid #ed6a5a;
+  border-bottom: 3px solid @highlight_important;
   border-radius: 0
 }
 
@@ -67,12 +69,13 @@ window.empty * > #window {
 #tray,
 #mode,
 #idle_inhibitor,
-#mpd
+#mpd,
+#custom-spotify
 {
-  border-bottom: 3px solid #36c9c6;
+  border-bottom: 3px solid @highlight_primary;
   padding: 0 10px;
-  margin: 3px 5px 0 5px;
-  background: white;
+  margin: 5px 5px 0 5px;
+  background: @bg_primary;
 }
 
 #idle_inhibitor {
@@ -80,9 +83,20 @@ window.empty * > #window {
 }
 
 #idle_inhibitor.activated {
-  background: #36c9c6;
-  color: white;
-  border-bottom-color: #ffffff;
+  background: @bg_invert;
+  color: @text_invert;
+  border-bottom-color: @highlight_invert;
+}
+
+#custom-spotify {
+  background: @bg_primary;
+  color: @text_primary;
+  border-bottom-color: @highlight_primary;
+}
+#custom-spotify.paused {
+  background: @bg_invert;
+  color: @text_invert;
+  border-bottom-color: @highlight_invert;
 }
 
 #network {
@@ -93,18 +107,22 @@ window.empty * > #window {
   min-width: 25px;
 }
 
-#pulseaudio.muted {
-  border-bottom-color: #ed6a5a;
+#clock {
+  margin-right: 10px;
 }
 
-#network.disconnected {
-  border-bottom-color: #ed6a5a;
-}
+/* #pulseaudio.muted { */
+/*   border-bottom-color: #ed6a5a; */
+/* } */
 
-#battery.charging {
-  border-bottom-color: #36c9c6;
-}
+/* #network.disconnected { */
+/*   border-bottom-color: #ed6a5a; */
+/* } */
 
-#batter.critical:not(.charging) {
-  border-bottom-color: #ed6a5a;
-}
+/* #battery.charging { */
+/*   border-bottom-color: #36c9c6; */
+/* } */
+
+/* #batter.critical:not(.charging) { */
+/*   border-bottom-color: #ed6a5a; */
+/* } */

@@ -224,4 +224,15 @@ gaps inner 10
 # Stylish window borders
 default_border pixel
 
+focus_follows_mouse no
+font "Noto Sans" 10
+
+bindsym --to-code XF86AudioPlay exec playerctl play-pause
+bindsym --to-code XF86AudioPrev exec playerctl previous
+bindsym --to-code XF86AudioNext exec playerctl next
+
+bindsym --to-code XF86AudioMute exec "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+bindsym --to-code XF86AudioLowerVolume exec "pactl set-sink-volume @DEFAULT_SINK@ -5%"
+bindsym --to-code XF86AudioRaiseVolume exec "pactl set-sink-volume @DEFAULT_SINK@ +5%"
+
 include /etc/sway/config.d/*

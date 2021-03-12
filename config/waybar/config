@@ -4,7 +4,7 @@
     "height": 30,
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": ["sway/window"],
-    "modules-right": ["tray", "idle_inhibitor", "pulseaudio", "network", "battery", "clock"],
+    "modules-right": ["tray", "custom/spotify", "idle_inhibitor", "pulseaudio", "network", "battery", "clock"],
     "sway/mode": {
         "format": "{}"
     },
@@ -21,6 +21,15 @@
         "timezone": "Europe/Amsterdam",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%Y-%m-%d}"
+    },
+    "custom/spotify": {
+        "interval": 1,
+        "return-type": "json",
+        "exec": "~/.config/waybar/modules/spotify.sh",
+        "exec-on-event": true,
+        "exec-if": "pgrep spotify",
+        "escape": true,
+        "on-click": "playerctl play-pause"
     },
     "idle_inhibitor": {
         "format": "{icon}",
