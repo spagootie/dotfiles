@@ -13,8 +13,3 @@ text-color=#293241
 [urgency=high]
 border-color=#ee6c4d
 ignore-timeout=1
-
-# We do not care about Spotify notifications, the current song is already
-# displayed in waybar
-[app-name="Spotify"]
-invisible=1

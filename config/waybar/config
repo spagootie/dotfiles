@@ -38,6 +38,9 @@
             "deactivated": ""
         }
     },
+    "sway/window": {
+        "max-length": 60
+    },
     "battery": {
         "states": {
             "warning": 20,

@@ -1,5 +1,10 @@
 #!/bin/sh
 
+# prevents perceived non-responsiveness from the spotify widget on click
+# let spotify update its internals for a split second before we poll it again
+# for data
+sleep 0.1
+
 class=$(playerctl metadata --player=spotify --format '{{lc(status)}}')
 icon=""
 
