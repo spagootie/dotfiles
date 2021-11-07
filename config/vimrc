@@ -1,3 +1,4 @@
+
 " @crescentrose's vimrc
 " a magic land of mystery and excitement
 " soundtrack: https://www.youtube.com/watch?v=--9aIYos4M8
@@ -28,8 +29,8 @@ call plug#begin('~/.vim/plugged')
   " vinegar.vim: Combine with netrw to create a delicious salad dressing
   Plug 'tpope/vim-vinegar'
   " Oceanic Next theme for neovim
-  Plug 'mhartington/oceanic-next'
   " A solid language pack for Vim.
+ Plug 'sonph/onehalf', { 'rtp': 'vim' }
   Plug 'sheerun/vim-polyglot'
   " EditorConfig plugin for Vim http://editorconfig.org
   Plug 'editorconfig/editorconfig-vim'
@@ -42,7 +43,9 @@ call plug#begin('~/.vim/plugged')
 
   " Check syntax in Vim asynchronously and fix files, with Language Server Protocol (LSP) support
   Plug 'dense-analysis/ale'
+  let b:ale_linters = ['gcc']
   let g:ale_sign_error = '❌'
+  let g:ale_c_build_dir = './'
   let g:ale_sign_warning = '⚠️'
   let g:ale_fixers = {
     \ '*': ['remove_trailing_lines', 'trim_whitespace'],
@@ -114,15 +117,15 @@ set autowriteall " automatically save on any editor switch
 set noshowmode
 
 " Make it painfully obvious how little space we have to write our prose
-set textwidth=80
-set colorcolumn=+1
+"set textwidth=80
+"set colorcolumn=+1
 
 " Do not wrap text automatically for the love of all that is holy
 set formatoptions-=t
 
 " Soft tabs, 2 spaces
 " TODO: Maybe I don't want 2 spaces per tab always.
-set tabstop=2
+set tabstop=8
 set shiftwidth=2
 set shiftround
 set expandtab
@@ -147,8 +150,6 @@ syntax on
 set fillchars+=vert:│
 
 " Display tabs and trailing spaces
-set list
-set listchars=tab:␉·,trail:␠,nbsp:⎵
 
 " (resigned sigh)
 set mouse=a
@@ -243,17 +244,6 @@ autocmd Filetype help nmap <buffer> q :q<cr>
 " Custom functions {{{
 
 " Light mode / dark mode switch
-function! DarkMode()
-  colorscheme OceanicNext
-  let g:lightline.colorscheme = 'wombat'
-  call LightlineReload()
-endfunction
-
-function! LightMode()
-  colorscheme OceanicNextLight
-  let g:lightline.colorscheme = 'ayu_light'
-  call LightlineReload()
-endfunction
 
 function! LightlineReload()
   call lightline#init()
@@ -325,29 +315,5 @@ endfunction
 
 " Automatic light mode / dark mode switcher {{{
 " You will need to build and install https://github.com/crescentrose/sunshine
-function! ChangeColorScheme(channel, msg)
-  let time = trim(a:msg)
-  if time ==# "day"
-    call LightMode()
-  else
-    call DarkMode()
-  endif
-endfunction
-
-function! Sunshine(timer)
-  if executable("sunshine")
-    let job = job_start(["sunshine", "-s", "#Amsterdam"], {"out_cb": "ChangeColorScheme"})
-  else
-    call DarkMode()
-  endif
-endfunction
-
-function! AutoDarkModeSetup()
-  let timer = timer_start(30000, 'Sunshine', {'repeat': -1})
-  call Sunshine(timer) " Initial call to setup the theme
-endfunction
-
-call AutoDarkModeSetup()
 " }}}
-
-" vim: fdm=marker fdl=0
+set notermguicolors t_Co=16
